@@ -62,7 +62,7 @@ impacts of a change should be automated.
 
 In Rug, this is achieved through Reviewers (soon available).
 
-## Commanding your ecosystem and reacting to what is happening now
+## Event-driven automation
 
 "It works on my machine!" is saying we often hear. In recent years, the devops
 trend has shown us that software does not stop once it has been delivered. 
