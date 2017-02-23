@@ -1,5 +1,3 @@
-## Rug Templates
-
 Rug Templates are files that contain parameterized content that can be
 used by Rug [generators](rug-generators.md)
 and [editors](rug-editors.md).  Templates are located in the

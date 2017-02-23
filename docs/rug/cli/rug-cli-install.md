@@ -1,4 +1,4 @@
-## Rug CLI Installation
+# CLI Installation
 
 You can install the Rug command-line interface (CLI) using the
 standard developer packaging tools for your platform.  We currently
@@ -12,7 +12,7 @@ using [Chocolatey][choco].
 Once you have it installed, continue with
 the [Rug CLI Quick Start](/quick-starts/rug-cli/).
 
-### Install the Rug CLI on Mac OS X / macOS
+## Install the Rug CLI on Mac OS X / macOS
 
 The easiest way to get start on a Mac is to install the Rug CLI using
 our [Homebrew][brew] [tap][] repository.
@@ -32,12 +32,12 @@ If you'd like to stay on the latest, possible unstable and un-released, version 
 $ brew upgrade --HEAD rug-cli --fetch-HEAD
 ```
 
-### Install the RUG CLI on Linux
+## Install the RUG CLI on Linux
 
 We support installing via packages on Debian and RPM-based GNU/Linux
 distributions.
 
-#### Debian/Ubuntu
+### Debian/Ubuntu
 
 To install on a Debian-based distributions, follow the next instructions:
 
@@ -87,7 +87,7 @@ $ sudo apt-get update
 $ sudo apt-get install openjdk-8-jdk
 ```
 
-#### RedHat/CentOS
+### RedHat/CentOS
 
 To install on a RedHat-based distributions, follow the next instructions:
 
@@ -111,7 +111,7 @@ To install on a RedHat-based distributions, follow the next instructions:
 
 The only required dependency is the JDK version 8 or later.
 
-### Install the RUG CLI on Windows
+## Install the RUG CLI on Windows
 
 We used [Nuget][nuget] and [Chocolatey][choco] to package and
 distribute the CLI on Windows systems (actually wherever .NET and
@@ -165,7 +165,7 @@ Files and directories in `%USERPROFILE%\.atomist` will not be
 removed. You can safely delete that directory manually if you don't
 intend to use the CLI any longer.
 
-### Docker installation
+## Docker installation
 
 If you cannot install using a system-wide approach, you can rely also on 
 downloading the CLI through a Docker image we provide.
@@ -223,7 +223,7 @@ above. Another approach is to switch to [user namespace][dockerun] on your host.
 
 [dockerun]: https://success.docker.com/KBase/Introduction_to_User_Namespaces_in_Docker_Engine
 
-### Manual installation
+## Manual installation
 
 If you are not on a supported platform, or just prefer to install the
 Rug CLI yourself, you can download the Rug CLI archive, unpack it, and

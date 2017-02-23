@@ -5,9 +5,9 @@ project concepts and make it *much* simpler to write your
 Rug [tests][], [generators][], [editors][], and reviewers (coming
 soon).
 
-[tests]: ../rug-tests.md
-[generators]: ../rug-generators.md
-[editors]: ../rug-editors.md
+[tests]: /rug/guides/rug-tests.md
+[generators]: /rug/guides/rug-generators.md
+[editors]: /rug/guides/rug-editors.md
 
 Consider the following line:
 

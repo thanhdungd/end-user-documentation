@@ -57,4 +57,4 @@ common activites through Atomist.
 The reference documentation aims to help you get a deeper dive through
 the tools, techniques and stucture of Atomist:
 
-[Go to the Reference Documentation...](reference-docs/index.md)
+[Go to the Reference Documentation...](rug/reference/index.md)

@@ -1,17 +1,12 @@
-## What goes in a Rug Archive?
+## What goes in a Rug Project?
 
 A key design goal was to respect your own tooling as much as possible
 so that ***every project should be a working Atomist project, and
 every Atomist project is a working project***.
 
-The Atomist Rug DSL was designed to work unintrusively alongside your
-existing projects to automate all the slow, annoying tasks of working
-in a modern software development environment.
-
-Atomist's Rug DSL can be expressed and packaged alongside your
-existing projects. A project that has a `.atomist` directory, along
-with some other artifacts that we'll explain here, is referred to as a
-*Rug project*.
+Rugs can be expressed and packaged alongside your existing projects. 
+A project that has a `.atomist` directory, along with some other artifacts 
+that we'll explain here, is referred to as a *Rug project*.
 
 A packaged (zipped) Rug Project is referred to as a *Rug project*.
 
@@ -62,21 +57,11 @@ project. For this reason, Rug artifacts are safely contained in a
   tests/       <= BDD-style tests for your Rugs
 ```
 
-Files in the `editors`, `executors`, and `reviewers` directory use the
-`.rug` extension if they are using the Rug DSL or the `.ts` extension
-if they are written in TypeScript.
-
-The templates in the `templates` directory can be
-either [Velocity][velocity] templates with a `.vm` extension
-or [Mustache][mustache] templates with a `.mustache` extension.
-
-[velocity]: http://velocity.apache.org/
-[mustache]: https://mustache.github.io/
-
-Rug tests use the `.rt` extension.
+Please refer to the [reference](/reference-docs/rug/index.md) documentation to 
+explore the concepts behing each of these.
 
 ### Next steps
 
-*   [Explore the syntax of Rug tests](/reference-docs/rug/rug-tests.md)
-*   [Explore the syntax of Rug editors](/reference-docs/rug/rug-editors.md)
-*   [Explore the syntax of Rug generators](/reference-docs/rug/rug-generators.md)
+*   [Explore the syntax of Rug tests](/rug/guides/rug-tests.md)
+*   [Explore the syntax of Rug editors](/rug/guides/rug-editors.md)
+*   [Explore the syntax of Rug generators](/rug/guides/rug-generators.md)

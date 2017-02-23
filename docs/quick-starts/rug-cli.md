@@ -577,4 +577,4 @@ questions, get help, and discuss all things Rug.
 [slack]: https://join.atomist.com/
 
 More detailed documentation can be found in the
-[Rug CLI reference documentation](/reference-docs/rug/rug-cli-commands.md).
+[Rug CLI reference documentation](/rug/cli/rug-cli-commands.md).

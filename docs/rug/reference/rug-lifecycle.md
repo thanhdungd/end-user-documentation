@@ -1,12 +1,13 @@
 # A Day in the Life of a Rug Project
 
-This page describes the nature, structure and lifecycle of a Rug
-project.
+This page describes the nature, structure and lifecycle of a 
+[Rug project][rugproj].
 
 If you haven't done so and you want to follow along, please [install
 the Rug CLI][install].
 
-[install]: http://docs.atomist.com/rug/rug-cli/rug-cli-install/
+[install]: /rug/cli/rug-cli-install.md
+[rugproj]: /rug/reference/rug-project.md
 
 ## Inception
 
