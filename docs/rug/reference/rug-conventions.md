@@ -1,9 +1,8 @@
 ## Rug Conventions & Best Practices
 
-Rug *is* the Atomist API and is implemented in [TypeScript][ts]. Rug is 
+Rug *is* the Atomist programming model in [TypeScript][ts]. Rug is 
 currently used  to define project [generators](rug-generators.md), 
-[editors](rug-editors.md), reviewers (coming soon), 
-[predicates](rug-predicates.md) and [tests](rug-tests.md).
+[editors](rug-editors.md), reviewers (coming soon), and [tests](rug-tests.md).
 
 [ts]: https://www.typescriptlang.org/
 [rug]: https://github.com/atomist/rug
