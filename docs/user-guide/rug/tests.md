@@ -89,17 +89,23 @@ Typically this is where the actual editor itself is invoked.
 
 The `#!typescript then` block then consists of one or more assertions about the final state of the project. It is good practice for these to be fine-grained so that reports are maximally informative about what succeeded and failed. The code of each failed assertion will be available in the test report.
 
-#### Some `Well-Known` Assertions
+#### Some Well-Known Assertions
 
 Certain well-known assertions can be used alone. These are indicated in the following keywords:
 
 TODO NEED TO MIGRATE THE FOLLOWING FUNCTIONALITY ****
 
-* `#!typescript NoChange`: The scenario passes if the editor does not change the input.
-* `#!typescript NotApplicable`: The scenario passes if the editor is not applied due to a precondition not being met.
-* `#!typescript ShouldFail`: The scenario passes if the editor fails.
-* `#!typescript MissingParameters`: The scenario passes if the editor fails due to missing parameters. Used to test parameter validation.
-* `#!typescript InvalidParameters`: The scenario passes if the editor fails due to invalid parameters. Used to test parameter validation.
+##### `NoChange`: 
+The assertion passes if the editor did not change the input.
+
+```
+Then("nothing should have changed", (p,world) => {
+})
+```
+##### `#!typescript NotApplicable`: The scenario passes if the editor is not applied due to a precondition not being met.
+##### `#!typescript ShouldFail`: The scenario passes if the editor fails.
+##### `#!typescript MissingParameters`: The scenario passes if the editor fails due to missing parameters. Used to test parameter validation.
+##### `#!typescript InvalidParameters`: The scenario passes if the editor fails due to invalid parameters. Used to test parameter validation.
 
 ### Passing Parameters to Operations
 TODO: cover editWith
