@@ -155,7 +155,7 @@ Your event handler is tested and running locally, time to ship it to Atomist
 so your team can benefit from it. To do, run the publish command as follows:
 
 ```console
-rug publish --id t1fbr1ctw
+rug publish
 Resolving dependencies for atomist-project-templates:sylvaintest4 (0.1.0·local) completed
 Invoking TypeScript Compiler on .ts files
   Compiled .atomist/handlers/event/MyEventCatcher.ts succeeded
