@@ -95,3 +95,6 @@ site/
 
 # emacs
 *~
+
+# VSCode
+.vscode/
