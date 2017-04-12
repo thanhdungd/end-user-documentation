@@ -72,6 +72,7 @@ pages:
 - Tutorials:
     - Ask the Bot a new Rug project: tutorials/create-rug-project-with-bot.md
     - A new Rug Project with the CLI: tutorials/create-rug-project-with-cli.md
+    - Add new event handler with the CLI: tutorials/add-a-rug-event-handler-with-cli.md
     - Send a message on a build: tutorials/send-message-on-build.md
 - User Guide:
     - Introduction: user-guide/index.md
