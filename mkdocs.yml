@@ -70,6 +70,7 @@ pages:
         - Build a Generator: getting-started/build-generator.md
     - What next: getting-started/what-next.md
 - Tutorials:
+    - Ask the Bot a new Rug project: tutorials/create-rug-project-with-bot.md
     - Send a message on a build: tutorials/send-message-on-build.md
 - User Guide:
     - Introduction: user-guide/index.md
