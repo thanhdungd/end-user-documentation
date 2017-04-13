@@ -1,5 +1,5 @@
-Atomist makes it easy to add Rugs to your own Rug project. This tutorial will
-take you throuw adding an event handler.
+This tutorial teaches you how to add an event handler, which allows Atomist to 
+take action when something happens in your development lifecycle.
 
 !!! note "Requirements"
     This tutorial assumes you have installed the [Rug CLI][ugcli] on your local
