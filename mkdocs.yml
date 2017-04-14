@@ -70,6 +70,10 @@ pages:
     - What next: getting-started/what-next.md
 - Tutorials:
     - Introduction: tutorials/index.md
+    - Create a Rug with the Bot: tutorials/create-rug-project-with-bot.md
+    - Create a Rug with the CLI: tutorials/create-rug-project-with-cli.md
+    - Add a Simple Event Handler: tutorials/add-a-rug-event-handler-with-cli.md
+    - Send a message on Build Events: tutorials/send-message-on-build.md
     - Build a Handler: tutorials/handler.md
     - Build a Generator: tutorials/generator.md
 - User Guide:
