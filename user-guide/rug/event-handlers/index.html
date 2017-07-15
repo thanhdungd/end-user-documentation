@@ -1,0 +1,2062 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for the Atomist Developer Platform">
+      
+      
+      
+        <meta name="author" content="The Atomist Team">
+      
+      
+        <link rel="shortcut icon" href="../../../images/favicon.ico">
+      
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.7.4">
+    
+    
+      
+        <title>Event Handlers - The Atomist Documentation</title>
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr-1df76c4e58.js"></script>
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application-769c285a91.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-02c2a4388f.palette.css">
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    
+  </head>
+  
+  
+  
+  
+    <body data-md-color-primary="green" data-md-color-accent="green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <a href="../../.." title="The Atomist Documentation" class="md-logo md-header-nav__button">
+            <img src="../../../images/atomist-logo-horiz-reversed.svg" width="24" height="24">
+          </a>
+        
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+                <span class="md-header-nav__parent">
+                  User Guide
+                </span>
+              
+                <span class="md-header-nav__parent">
+                  Rug
+                </span>
+              
+            
+            Event Handlers
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/atomist/rug" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      Rug
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    
+      <i class="md-logo md-nav__button">
+        <img src="../../../images/atomist-logo-horiz-reversed.svg">
+      </i>
+    
+    The Atomist Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/atomist/rug" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      Rug
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Overview
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Overview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../capabilities/" title="Capabilities" class="md-nav__link">
+      Capabilities
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/prerequisites/" title="Prerequisites" class="md-nav__link">
+      Prerequisites
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/slack/" title="Connect Atomist to Slack" class="md-nav__link">
+      Connect Atomist to Slack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/github/" title="Connect Atomist to GitHub" class="md-nav__link">
+      Connect Atomist to GitHub
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5">
+    
+    <label class="md-nav__link" for="nav-2-5">
+      Connect Atomist to CI
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        Connect Atomist to CI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/ci/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/travis-ci/" title="Travis CI" class="md-nav__link">
+      Travis CI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/jenkins/" title="Jenkins" class="md-nav__link">
+      Jenkins
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/bot/" title="Atomist Bot" class="md-nav__link">
+      Atomist Bot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../getting-started/what-next/" title="What next" class="md-nav__link">
+      What next
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/setup-cli/" title="Setup Rug CLI" class="md-nav__link">
+      Setup Rug CLI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/create-rug-project/" title="Create Rug Project" class="md-nav__link">
+      Create Rug Project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/setup-typescript/" title="Setup TypeScript" class="md-nav__link">
+      Setup TypeScript
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/publish-rug-project/" title="Publish Rug Project" class="md-nav__link">
+      Publish Rug Project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/add-bot-command/" title="Add Bot Command" class="md-nav__link">
+      Add Bot Command
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      User Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        User Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" checked>
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Rug
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Rug
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Event Handlers
+      </label>
+    
+    <a href="./" title="Event Handlers" class="md-nav__link md-nav__link--active">
+      Event Handlers
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-an-event-handler" title="Anatomy of an Event Handler" class="md-nav__link">
+    Anatomy of an Event Handler
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-event-handler" title="Example Event Handler" class="md-nav__link">
+    Example Event Handler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration" title="Declaration" class="md-nav__link">
+    Declaration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" title="Implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discovery" title="Discovery" class="md-nav__link">
+    Discovery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventplans" title="EventPlans" class="md-nav__link">
+    EventPlans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages" title="Messages" class="md-nav__link">
+    Messages
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directed-messages" title="Directed Messages" class="md-nav__link">
+    Directed Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle-messages" title="Lifecycle Messages" class="md-nav__link">
+    Lifecycle Messages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#respondables" title="Respondables" class="md-nav__link">
+    Respondables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" title="Instructions" class="md-nav__link">
+    Instructions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rug-functions" title="Rug Functions" class="md-nav__link">
+    Rug Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" title="Secrets" class="md-nav__link">
+    Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-handlers" title="Response Handlers" class="md-nav__link">
+    Response Handlers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../command-handlers/" title="Command Handlers" class="md-nav__link">
+      Command Handlers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../editors/" title="Editors" class="md-nav__link">
+      Editors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../generators/" title="Generators" class="md-nav__link">
+      Generators
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rug-functions/" title="Rug Functions" class="md-nav__link">
+      Rug Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../secrets/" title="Secrets" class="md-nav__link">
+      Secrets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../extensions/" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../path-expressions/" title="Path Expressions" class="md-nav__link">
+      Path Expressions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../microgrammars/" title="Microgrammars" class="md-nav__link">
+      Microgrammars
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../templates/" title="Templates" class="md-nav__link">
+      Templates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tests/" title="Tests" class="md-nav__link">
+      Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/" title="Projects" class="md-nav__link">
+      Projects
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../archives/" title="Archives" class="md-nav__link">
+      Archives
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lifecycle/" title="Lifecycle" class="md-nav__link">
+      Lifecycle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../runtime/" title="Runtime" class="md-nav__link">
+      Runtime
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../conventions/" title="Conventions" class="md-nav__link">
+      Conventions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Integrations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Integrations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../integrations/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../integrations/slack/" title="Slack" class="md-nav__link">
+      Slack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../integrations/github/" title="GitHub.com" class="md-nav__link">
+      GitHub.com
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../integrations/travis-ci/" title="Travis CI" class="md-nav__link">
+      Travis CI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../integrations/jenkins/" title="Jenkins" class="md-nav__link">
+      Jenkins
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Interfaces
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        Interfaces
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interfaces/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interfaces/bot/" title="Bot" class="md-nav__link">
+      Bot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4-3" type="checkbox" id="nav-4-4-3">
+    
+    <label class="md-nav__link" for="nav-4-4-3">
+      CLI
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-4-3">
+        CLI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interfaces/cli/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interfaces/cli/install/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interfaces/cli/basics/" title="Basics" class="md-nav__link">
+      Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interfaces/cli/using-rugs/" title="Using Rugs" class="md-nav__link">
+      Using Rugs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../interfaces/cli/developing-rugs/" title="Developing Rugs" class="md-nav__link">
+      Developing Rugs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../fingerprints/" title="Fingerprints" class="md-nav__link">
+      Fingerprints
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../seeds/" title="Seeds" class="md-nav__link">
+      Seeds
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../spring-agent/" title="Spring Agent" class="md-nav__link">
+      Spring Agent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-8" type="checkbox" id="nav-4-8">
+    
+    <label class="md-nav__link" for="nav-4-8">
+      Permissions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-8">
+        Permissions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../permissions/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../permissions/slack/" title="Slack Scopes" class="md-nav__link">
+      Slack Scopes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../permissions/github/" title="GitHub Scopes" class="md-nav__link">
+      GitHub Scopes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Reference Documentation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Reference Documentation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../reference/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Rug
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Rug
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../reference/rug/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../reference/rug/extensions/" title="Extensions" class="md-nav__link">
+      Extensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../reference/rug/path-expressions/" title="Path Expressions" class="md-nav__link">
+      Path Expressions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../reference/rug-cli/" title="Rug CLI" class="md-nav__link">
+      Rug CLI
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-an-event-handler" title="Anatomy of an Event Handler" class="md-nav__link">
+    Anatomy of an Event Handler
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-event-handler" title="Example Event Handler" class="md-nav__link">
+    Example Event Handler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration" title="Declaration" class="md-nav__link">
+    Declaration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" title="Implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discovery" title="Discovery" class="md-nav__link">
+    Discovery
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventplans" title="EventPlans" class="md-nav__link">
+    EventPlans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages" title="Messages" class="md-nav__link">
+    Messages
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directed-messages" title="Directed Messages" class="md-nav__link">
+    Directed Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle-messages" title="Lifecycle Messages" class="md-nav__link">
+    Lifecycle Messages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#respondables" title="Respondables" class="md-nav__link">
+    Respondables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" title="Instructions" class="md-nav__link">
+    Instructions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rug-functions" title="Rug Functions" class="md-nav__link">
+    Rug Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" title="Secrets" class="md-nav__link">
+    Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-handlers" title="Response Handlers" class="md-nav__link">
+    Response Handlers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Event Handlers</h1>
+                
+                <p>Events are everywhere in software development and operations processes.
+Your source code repositories generate events. Your CI systems generate events.
+Your runtime platforms generate events. Your services generate events. Your issue
+tracking systems generate events. Everything seems to generate events.</p>
+<p>Atomist believes that bringing all these events together so they can be
+connected and acted upon provides tremendous value for shipping better code
+faster. The mechanism for realizing this promise is to automate event responses
+using Rug event handlers.</p>
+<p>Event handlers define automated responses to events. Each event handler is a
+program in a compiles-to-JavaScript, Turing-complete language. Based on the
+characteristics of the event that occurred, the handler decides whether to act and
+which actions to take.</p>
+<div class="admonition hint">
+<p class="admonition-title">Why not try&hellip;</p>
+<p>A new issue was created? Post that in the repository&rsquo;s chat channel and also add
+buttons to the message that let people apply labels or claim the issue without
+leaving chat.</p>
+<p>A developer submits a pull request in a library? Find out whether it will
+impact a service that uses the library: create a branch in the service, modify
+the code to update the dependency.</p>
+<p>The service build completes successfully? Update the library&rsquo;s pull request
+(PR), and tell the developer all the news.</p>
+<p>A person in chat asks Atomist &ldquo;what did I do today?&rdquo;? Respond by
+listing the issues they updated, the PRs they reviewed, and the commits they
+pushed.</p>
+</div>
+<h2 id="anatomy-of-an-event-handler">Anatomy of an Event Handler<a class="headerlink" href="#anatomy-of-an-event-handler" title="Permanent link">&para;</a></h2>
+<p>Rug event handlers are where you define how Atomist responds to the events that
+matter in your system.</p>
+<p>Depending on their goal, Event Handler implementations are stored either along
+side the project they target or in different projects altogether.</p>
+<p>Below is the basic structure of any Rug project, except that our handlers live in
+the <code>.atomist/handlers</code> directory:</p>
+<div class="codehilite"><pre><span></span><span class="go">~/workspace/team-handlers</span>
+<span class="go">    ├── .atomist</span>
+<span class="go">    │   ├── .gitignore</span>
+<span class="go">    │   ├── handlers</span>
+<span class="go">    │   │   ├── command</span>
+<span class="go">    │   │   │   └── MergePR.ts</span>
+<span class="go">    │   │   └── event</span>
+<span class="go">    │   │   │   └── GitHubCommit.ts</span>
+<span class="go">    │   ├── package.json</span>
+<span class="go">    │   ├── tests</span>
+<span class="go">    │   └── tsconfig.json</span>
+<span class="go">    ├── CHANGELOG.md</span>
+<span class="go">    ├── .gitignore</span>
+<span class="go">    ├── LICENSE</span>
+<span class="go">    └── README.md</span>
+</pre></div>
+
+<p>The remaining files and directors of this Rug follows the usual
+<a href="../projects/">Rug project</a> structure.</p>
+<h3 id="example-event-handler">Example Event Handler<a class="headerlink" href="#example-event-handler" title="Permanent link">&para;</a></h3>
+<p>The following event handler responds to GitHub issue <code>closed</code> events. When this
+event occurs, the Atomist Bot sends a message to the repository&rsquo;s Slack channel
+informing people in the channel about the closing <em>event</em>, whilst also providing
+a button, that when clicked, will reopen it.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">EventHandler</span><span class="p">,</span> <span class="nx">Tags</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@atomist/rug/operations/Decorators&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">HandleEvent</span><span class="p">,</span> <span class="nx">LifecycleMessage</span><span class="p">,</span> <span class="nx">Plan</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@atomist/rug/operations/Handlers&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">GraphNode</span><span class="p">,</span> <span class="nx">Match</span><span class="p">,</span> <span class="nx">PathExpression</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@atomist/rug/tree/PathExpression&quot;</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Comment</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@atomist/cortex/Comment&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Issue</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@atomist/cortex/Issue&quot;</span><span class="p">;</span>
+
+<span class="kd">@EventHandler</span><span class="p">(</span><span class="s2">&quot;ClosedGitHubIssues&quot;</span><span class="p">,</span> <span class="s2">&quot;Handles closed issue events&quot;</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">PathExpression</span><span class="o">&lt;</span><span class="nx">Issue</span><span class="p">,</span> <span class="nx">Issue</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="sb">`/Issue()[@state=&#39;closed&#39;]</span>
+<span class="sb">            [/resolvingCommits::Commit()/author::GitHubId()</span>
+<span class="sb">                [/person::Person()/chatId::ChatId()]?]?</span>
+<span class="sb">            [/openedBy::GitHubId()</span>
+<span class="sb">                [/person::Person()/chatId::ChatId()]?]</span>
+<span class="sb">            [/closedBy::GitHubId()</span>
+<span class="sb">                [/person::Person()/chatId::ChatId()]?]?</span>
+<span class="sb">            [/repo::Repo()/channels::ChatChannel()]</span>
+<span class="sb">            [/labels::Label()]?`</span><span class="p">))</span>
+<span class="kd">@Tags</span><span class="p">(</span><span class="s2">&quot;github&quot;</span><span class="p">,</span> <span class="s2">&quot;issue&quot;</span><span class="p">)</span>
+<span class="kr">class</span> <span class="nx">ClosedIssue</span> <span class="kr">implements</span> <span class="nx">HandleEvent</span><span class="o">&lt;</span><span class="nx">Issue</span><span class="p">,</span> <span class="nx">Issue</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">handle</span><span class="p">(</span><span class="nx">event</span>: <span class="kt">Match</span><span class="o">&lt;</span><span class="nx">Issue</span><span class="p">,</span> <span class="nx">Issue</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">Plan</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">issue</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">root</span><span class="p">();</span>
+
+        <span class="kr">const</span> <span class="nx">lifecycleId</span> <span class="o">=</span> <span class="s2">&quot;issue/&quot;</span> <span class="o">+</span> <span class="nx">issue</span><span class="p">.</span><span class="nx">repo</span><span class="p">.</span><span class="nx">owner</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nx">issue</span><span class="p">.</span><span class="nx">repo</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nx">issue</span><span class="p">.</span><span class="kt">number</span><span class="p">;</span>
+        <span class="kr">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LifecycleMessage</span><span class="p">(</span><span class="nx">issue</span><span class="p">,</span> <span class="nx">lifecycleId</span><span class="p">);</span>
+
+        <span class="nx">message</span><span class="p">.</span><span class="nx">addAction</span><span class="p">({</span>
+            <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;Reopen&quot;</span><span class="p">,</span>
+            <span class="nx">instruction</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;command&quot;</span><span class="p">,</span>
+                <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;ReopenGitHubIssue&quot;</span><span class="p">,</span>
+                <span class="nx">parameters</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">issue</span>: <span class="kt">issue.number</span><span class="p">,</span>
+                    <span class="nx">owner</span>: <span class="kt">issue.repo.owner</span><span class="p">,</span>
+                    <span class="nx">repo</span>: <span class="kt">issue.repo.name</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+        <span class="p">});</span>
+
+        <span class="k">return</span> <span class="nx">Plan</span><span class="p">.</span><span class="nx">ofMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">closedIssue</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ClosedIssue</span><span class="p">();</span>
+</pre></div>
+</td></tr></table>
+
+<p>This event handler follows the same programming model as other Rugs, so it 
+should look familiar. It gets triggered for each GitHub repository <code>Commit</code> event
+in the team and responds by sending a <a href="#messages">Lifecycle Message</a> to the Atomist
+Bot.</p>
+<h3 id="declaration">Declaration<a class="headerlink" href="#declaration" title="Permanent link">&para;</a></h3>
+<p>Declaring an event handler is done using the <code class="codehilite"><span class="kd">@EventHandler</span></code> class
+decorator which requires a name and a description. Additionally, it requires a 
+<a href="../path-expressions/">Path Expression</a>, which registers the types of events for which the handler
+should be triggered.</p>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<p>Rug event handlers must implemente the <code class="codehilite"><span class="nx">HandleEvent</span><span class="o">&lt;</span><span class="nx">R</span><span class="p">,</span><span class="nx">M</span><span class="o">&gt;</span></code> interface, 
+where the <code>R</code> and <code>M</code> type parameters refer to the expected root node and match
+types resulting from the execution of a <a href="../path-expressions/">Path Expression</a> respectively.</p>
+<h3 id="discovery">Discovery<a class="headerlink" href="#discovery" title="Permanent link">&para;</a></h3>
+<p>All Rugs should be annotated with one or more <code class="codehilite"><span class="kd">@Tags</span></code> 
+<a href="https://www.typescriptlang.org/docs/handbook/decorators.html">decorators</a> to optimize their discoverability. For 
+example if you were to create an Rug that alters a README file
+then the following <code class="codehilite"><span class="kd">@Tags</span></code> would be applicable:</p>
+<div class="codehilite"><pre><span></span><span class="kd">@Tags</span><span class="p">(</span><span class="s2">&quot;readme&quot;</span><span class="p">,</span> <span class="s2">&quot;documentation&quot;</span><span class="p">)</span>
+</pre></div>
+
+<p>Tag values should consist of only lower case letters, numbers, and
+dashes (<code>-</code>).</p>
+<p>If possible, try to include at least one of the tags on your Rug maps to an image
+for a nicer rendering.  The following tags currently have images:
+<code>docker</code>,<code>github</code>, <code>travis-ci</code>, <code>apache</code>, <code>git</code>, <code>spring-boot</code>,
+<code>spring</code>, <code>clojure</code>, <code>go</code>, <code>java</code>, <code>python</code>, <code>scala</code>, and
+<code>documentation</code>.</p>
+<h3 id="eventplans">EventPlans<a class="headerlink" href="#eventplans" title="Permanent link">&para;</a></h3>
+<p>An <code class="codehilite"><span class="nx">EventPlan</span></code> describes the actions to be taken by the Rug runtime
+on behalf of the handler. EventPlans are composed of <a href="#messages">Messages</a> and/or 
+<a href="#respondables">respondables</a>. Respondables instruct the rug runtime to automatically
+perform ordinary Rug operations, whereas messages are sent to chat by the Atomist
+Bot.</p>
+<h3 id="messages">Messages<a class="headerlink" href="#messages" title="Permanent link">&para;</a></h3>
+<p>A <code>Message</code> represents presentable content and/or deferable actions displayed
+to the user in response to returning an <code class="codehilite"><span class="nx">EventPlan</span></code> from an event
+handler. Every message will end up being sent to a chat channel or user by the
+Atomist bot. However, each of the two available message types achieve this in 
+different ways.</p>
+<h4 id="directed-messages">Directed Messages<a class="headerlink" href="#directed-messages" title="Permanent link">&para;</a></h4>
+<p>A Directed Message is sent directly to on or more users or channels. No
+automatic routing is performed by the Atomist Bot. It&rsquo;s possible to
+add Directed Messages to a Plan returned by any handler type.</p>
+<p>The simplest use of a Response Message just echos back some plain text to
+the user that invoked the command:</p>
+<div class="codehilite"><pre><span></span>    <span class="nx">handle</span><span class="p">(</span><span class="nx">command</span>: <span class="kt">HandlerContext</span><span class="p">)</span><span class="o">:</span> <span class="nx">CommandPlan</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">bob</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserAddress</span><span class="p">(</span><span class="s2">&quot;@bob&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">CommandPlan</span><span class="p">.</span><span class="nx">ofMessage</span><span class="p">(</span><span class="k">new</span> <span class="nx">DirectedMessage</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="nx">bob</span><span class="p">));</span>
+    <span class="p">}</span>
+</pre></div>
+
+<p>It&rsquo;s possible to add more channels or usernames:</p>
+<div class="codehilite"><pre><span></span><span class="nx">handle</span><span class="p">(</span><span class="nx">response</span>: <span class="kt">Response</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">CommandPlan</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">bob</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserAddress</span><span class="p">(</span><span class="s2">&quot;@bob&quot;</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">msg</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">DirectedMessage</span><span class="p">(</span><span class="s2">&quot;Hello everyone!&quot;</span><span class="p">,</span> <span class="nx">bob</span><span class="p">);</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="nx">addAddress</span><span class="p">(</span><span class="k">new</span> <span class="nx">ChannelAddress</span><span class="p">(</span><span class="s2">&quot;#general&quot;</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nx">CommandPlan</span><span class="p">.</span><span class="nx">ofMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>By default, the body of the message is assumed to be <code>&quot;text/plain</code>, and will be
+displayed verbatim. The message can also be JSON formatted according to
+<a href="https://api.slack.com/docs/messages/builder">Slack&rsquo;s message standards</a>:</p>
+<div class="codehilite"><pre><span></span>    <span class="nx">handle</span><span class="p">(</span><span class="nx">command</span>: <span class="kt">HandlerContext</span><span class="p">)</span><span class="o">:</span> <span class="nx">CommandPlan</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserAddress</span><span class="p">(</span><span class="s2">&quot;@bob&quot;</span><span class="p">);</span>
+        <span class="kr">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;I am a test message https://www.atomist.com&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;attachments&quot;</span><span class="o">:</span> <span class="p">[{</span>
+               <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;And here’s an attachment!&quot;</span>
+             <span class="p">}]</span>
+        <span class="p">}</span>
+        <span class="kr">const</span> <span class="nx">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DirectedMessage</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">),</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">MessageMimeTypes</span><span class="p">.</span><span class="nx">SLACK_JSON</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">CommandPlan</span><span class="p">.</span><span class="nx">ofMessage</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+
+<h4 id="lifecycle-messages">Lifecycle Messages<a class="headerlink" href="#lifecycle-messages" title="Permanent link">&para;</a></h4>
+<p>As implied by the name, a <code class="codehilite"><span class="nx">LifecycleMessage</span></code> refers to some
+pre-defined system lifecycle, such as the flow of a commit from Git,
+through CI to deployment, monitoring and the like.</p>
+<p>Lifecycle messages are automatically routed to appropriate chat channel by
+the Atomist Bot. Typically, this is the channel associated with the GitHub
+repository associated with the activity initiating the lifecycle message.</p>
+<p>Message styling is also currently performed by the Atomist Bot, though we are
+working to allow customization in the handlers themselves.</p>
+<p>The Atomist Bot needs two pieces of information in order to correctly route and
+render a lifecycle message, a <a href="../path-expressions/">GraphNode</a> and
+a <code>lifecycle-id</code>. The GraphNode contains all the data required to render actionable
+messages in chat, and the lifecycle-id ties associates related messages to
+one-another. In a Slack context, this means a Commit message could have its
+associated CI build status updated as the build progresses from say <code>started</code>
+through <code>succeeded</code> or <code>failed</code>.</p>
+<p>So the main responsibility of lifecycle messages is to create associations between
+related messages using the lifecycle-id.</p>
+<p>Messages would not be actionable without some way for the user to initiate related
+acitivites. Lifecyce messages achieve this by allowing <code>actions</code> in the form of a
+<code class="codehilite"><span class="nx">Presentable</span></code> to be added to the message before dispatch:</p>
+<div class="codehilite"><pre><span></span> <span class="nx">message</span><span class="p">.</span><span class="nx">addAction</span><span class="p">({</span>
+            <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;Reopen&quot;</span><span class="p">,</span>
+            <span class="nx">instruction</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;command&quot;</span><span class="p">,</span>
+                <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;ReopenGitHubIssue&quot;</span><span class="p">,</span>
+                <span class="nx">parameters</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">issue</span>: <span class="kt">issue.number</span><span class="p">,</span>
+                    <span class="nx">owner</span>: <span class="kt">issue.repo.owner</span><span class="p">,</span>
+                    <span class="nx">repo</span>: <span class="kt">issue.repo.name</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+        <span class="p">});</span>
+</pre></div>
+
+<p>Here we are saying: render a button with label <code>Reopen</code>, which when clicked, will
+dispatch a <a href="../command-handlers/">Command Handler</a> (<code class="codehilite"><span class="s2">&quot;command&quot;</span></code>)
+called <code>ReopenGithubIssue</code>, which will execute a <a href="../rug-functions/">Rug Function</a>
+which attempt to re-open the issue.</p>
+<p>The term <code>action</code> here refers to the actions associated with <a href="https://api.slack.com/docs/message-buttons">Slack buttons</a>.
+So by adding actions to a message, we are dispatching optional deferred Rug
+executions. In this instance a Command Handler bound to a specific GitHub issue,
+but it could just as easily have been an <a href="../editors/">editor</a> or <a href="../generators/">generator</a>.</p>
+<h3 id="respondables">Respondables<a class="headerlink" href="#respondables" title="Permanent link">&para;</a></h3>
+<p>An <code class="codehilite"><span class="nx">EventRespondable</span></code> is really just a container for an instruction and
+some optional <code>onError</code> and <code>onSuccess</code> capabilities. The <code>onError</code> and <code>onSuccess</code>
+properties of an <code class="codehilite"><span class="nx">EventRespondable</span></code> can be <a href="#messages">messages</a>, 
+<a href="#eventplans">EventPlans</a> or <a href="#response-handlers">response handlers</a>.</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">plan</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventPlan</span><span class="p">();</span>
+<span class="nx">plan</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="nx">instruction</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span>
+            <span class="nx">project</span><span class="o">:</span> <span class="s2">&quot;rugs&quot;</span><span class="p">,</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;UpdateReadme&quot;</span><span class="p">,</span>
+            <span class="nx">parameters</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">newContent</span><span class="o">:</span> <span class="s2">&quot;Rugs really tie the room together&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">onSuccess</span>: <span class="kt">new</span> <span class="nx">DirectedMessage</span><span class="p">(</span><span class="s2">&quot;woot&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">ChannelAddress</span><span class="p">(</span><span class="s2">&quot;#random&quot;</span><span class="p">)),</span>
+        <span class="nx">onError</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;respond&quot;</span><span class="p">,</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;HandleReadmeUpdateErrors&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+
+<p>The example above shows how to send <code>woot</code> to the <code>#random</code> channel using a
+<a href="#messages">Directed Message</a> if the <code>edit</code> Instruction completes successfully,
+and invoke the <code>HandleReadmeUpdateErros</code> <a href="#response-handlers">Response Handler</a>
+if it fails.</p>
+<h3 id="instructions">Instructions<a class="headerlink" href="#instructions" title="Permanent link">&para;</a></h3>
+<p>Instructions in an <code class="codehilite"><span class="nx">EventRespondable</span></code> have the following properties:</p>
+<ul>
+<li><code class="codehilite"><span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;generate&quot;</span> <span class="o">|</span> <span class="s2">&quot;edit&quot;</span> <span class="o">|</span> <span class="s2">&quot;execute&quot;</span></code>: the kind of instruction </li>
+<li><code class="codehilite"><span class="nx">name</span>: <span class="kt">string</span></code>: the name of the operation to apply</li>
+<li><code class="codehilite"><span class="nx">parameters</span><span class="o">:</span> <span class="p">{}</span></code>: key/value pairs passed to the operation</li>
+<li><code class="codehilite"><span class="nx">project?</span>: <span class="kt">string</span></code>: Project name (only for generators &amp; editors)</li>
+</ul>
+<p>Instructions can be used to have the rug runtime run Rugs, such as invoking
+a generator (<code class="codehilite"><span class="s2">&quot;generate&quot;</span></code>), an editor (<code class="codehilite"><span class="s2">&quot;edit&quot;</span></code>), or
+a <a href="#rug-functions">Rug Funtion</a> (<code class="codehilite"><span class="s2">&quot;execute&quot;</span></code>).</p>
+<h3 id="rug-functions">Rug Functions<a class="headerlink" href="#rug-functions" title="Permanent link">&para;</a></h3>
+<p>Rug Functions, as indicated by their name, are functions that can be invoked
+from within Event or Command Handlers. They can be scheduled for invocation by
+adding an instruction of kind <code>execute</code> to a plan:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nx">plan</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="nx">instruction</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;execute&quot;</span><span class="p">,</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+            <span class="nx">parameters</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;https://api.github.com/repos/atomist/rug&quot;</span><span class="p">,</span>
+                <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
+                <span class="nx">config</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Authorization&quot;</span><span class="o">:</span> <span class="sb">`token #{github://user_token?scopes=repo}`</span><span class="p">,</span>
+                    <span class="p">},</span>
+                    <span class="nx">body</span>: <span class="kt">JSON.stringify</span><span class="p">(</span><span class="nx">createRepoRequest</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">onSuccess</span>: <span class="kt">new</span> <span class="nx">DirectMessage</span><span class="p">(</span><span class="s2">&quot;Woot!&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">ChannelAddress</span><span class="p">(</span><span class="s2">&quot;#random&quot;</span><span class="p">)),</span>
+        <span class="nx">onError</span>: <span class="kt">new</span> <span class="nx">DirectMessage</span><span class="p">(</span><span class="s2">&quot;Un oh&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">ChannelAddress</span><span class="p">(</span><span class="s2">&quot;#random&quot;</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>The plan above instructs the Rug Runtime to invoke the <code>http</code> Rug Function,
+passing all the <code>parameters</code> to it, and sending appropriate messages to the
+<code>#random</code> channel <code>onSuccess</code> or <code>onError</code>.</p>
+<p>To use a Rug Function from an Event or Command Handler, its archive&rsquo;s
+coordinates must be present in the <code>.atomist.extensions</code> section of
+the Rug project&rsquo;s <a href="../archives/" title="Rug Archives"><code>package.json</code></a>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Security</p>
+<p>All Rug Function archives must be signed by Atomist and be explicitly
+whitelisted in the Atomist service. Otherwise, the execution of the invoking
+handler will be aborted.</p>
+</div>
+<p><a href="#secrets">Secrets</a> can also be passed to Rug Functions, but currently this is only supported
+for Command Handlers.</p>
+<p>The special <code>#{&lt;secret path&gt;}</code> notation used above is a way of injecting the value
+of a secret (in this case, a GitHub token with <code>repo</code> scope) in to the parameters
+to a function via string filtering. Rug Functions can also be <a href="https://github.com/atomist/rug-functions-aws/blob/master/src/main/scala/com/atomist/rug/MirrorRepoToS3.scala#L40">annotated</a>
+so that if the secrets required are known in advance, we don&rsquo;t need to use paramter
+filtering.</p>
+<p>The following Rug Function archives available:</p>
+<ul>
+<li><a href="https://github.com/atomist/rug-function-http">rug-function-http</a> - perform arbitrary HTTP requests</li>
+<li><a href="https://github.com/atomist/rug-functions-travis">rug-functions-travis</a> - encrypt secrets, start/stop builds</li>
+<li><a href="https://github.com/atomist/rug-functions-aws">rug-functions-aws</a> - perform s3 operations and so on</li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Creating your own Rug functions</p>
+<p>Right now there is no support for user-created Rug functions. Please get in
+touch by joining our <a href="https://join.atomist.com/">Slack team</a> if you need one
+that doesn&rsquo;t already exist.</p>
+</div>
+<h3 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h3>
+<p>Secrets are pieces of sensitive information stored securely by Atomist. Secrets
+are used by <a href="../rug-functions/">Rug Functions</a> to provide access
+to secured systems, such as the GitHub API.</p>
+<p>Handlers that invoke Rug Functions that require secrets must use the
+<code class="codehilite"><span class="kd">@Secrets</span></code> decorator to declare to the Rug runtime that those
+secrets will be required during the execution of the handler&rsquo;s CommandPlan:</p>
+<div class="codehilite"><pre><span></span><span class="p">...</span>
+<span class="kd">@Secrets</span><span class="p">(</span><span class="s2">&quot;github://user_token?scopes=repo,read:org&quot;</span><span class="p">)</span>
+<span class="kr">class</span> <span class="nx">CloseIssueCommand</span> <span class="kr">implements</span> <span class="nx">HandleCommand</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>The <code class="codehilite"><span class="kd">@Secrets</span></code> decorator takes a comma separate list of secret
+paths. The decorator provides enough context to the Atomist Bot such that it
+can initiate the secure collection of the require secret data, such as a GitHub
+token collected via OAuth flow.</p>
+<div class="admonition success">
+<p class="admonition-title">Confidentiality</p>
+<p>All sensitive data stored by Atomist are encrypted at rest in
+<a href="https://www.vaultproject.io/docs/internals/security.html">Vault</a>.</p>
+</div>
+<p>There are currently two types of secrets:</p>
+<ul>
+<li>GitHub tokens: automatically collected by the Atomist Bot<ul>
+<li><code class="codehilite"><span class="s2">&quot;github://user_token?scopes=repo&quot;</span></code> - <code>repo</code> scoped user token</li>
+<li><code class="codehilite"><span class="s2">&quot;github://team_token?scopes=repo&quot;</span></code> - <code>repo</code> scoped
+team token Both user and team GitHub tokens require the scopes
+needed by the <a href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/">token</a> to be provided as a comma-separated list.</li>
+</ul>
+</li>
+<li>Generic Secrets: manual collection<ul>
+<li><code class="codehilite"><span class="s2">&quot;secret://user?path=/some/secret&quot;</span></code> - generic user secret</li>
+<li><code class="codehilite"><span class="s2">&quot;secret://team?path=/some/secret&quot;</span></code> - generic team secret</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Generic Secrets</p>
+<p>These are currently only available for very specific and mostly internal use
+cases as we currently have no secure public mechanism for collecting and storing
+them, though this is something we are hoping to support in the near future. They
+are mentioned here to avoid any confusion when seen in publically visible Handlers.</p>
+</div>
+<div class="admonition missing">
+<p class="admonition-title">Missing</p>
+<p>Although it&rsquo;s possible to invoke Rug Functions from Event Handlers, there is
+currently no mechanism to populate Secrets (tokens, passwords etc.) as there
+is for Command Handlers. We are currently working on support for this.</p>
+</div>
+<h3 id="response-handlers">Response Handlers<a class="headerlink" href="#response-handlers" title="Permanent link">&para;</a></h3>
+<p>A <code class="codehilite"><span class="nx">Respond</span></code> object (declared using <code class="codehilite"><span class="p">{</span><span class="nx">kind</span><span class="o">:</span> <span class="s2">&quot;respond&quot;</span><span class="p">}</span></code>)
+indicates the desire to handle the response to an Instruction using a
+<code class="codehilite"><span class="nx">ResponseHandler</span></code> object.</p>
+<div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span>
+    <span class="nx">Parameter</span><span class="p">,</span> <span class="nx">ParseJson</span><span class="p">,</span> <span class="nx">ResponseHandler</span><span class="p">,</span> <span class="nx">Tags</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@atomist/rug/operations/Decorators&quot;</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span>
+    <span class="nx">ChannelAddress</span><span class="p">,</span> <span class="nx">DirectedMessage</span><span class="p">,</span> <span class="nx">EventPlan</span><span class="p">,</span> <span class="nx">HandlerContext</span><span class="p">,</span>
+    <span class="nx">HandleResponse</span><span class="p">,</span> <span class="nx">Response</span><span class="p">,</span> <span class="nx">ResponseMessage</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;@atomist/rug/operations/Handlers&quot;</span><span class="p">;</span>
+
+<span class="kd">@ResponseHandler</span><span class="p">(</span><span class="s2">&quot;GenericSuccessHandler&quot;</span><span class="p">,</span> <span class="s2">&quot;displays a success message in chat&quot;</span><span class="p">)</span>
+<span class="kd">@Tags</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">)</span>
+<span class="kr">class</span> <span class="nx">GenericSuccessHandler</span> <span class="kr">implements</span> <span class="nx">HandleResponse</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="kd">@Parameter</span><span class="p">({</span> <span class="nx">description</span><span class="o">:</span> <span class="s2">&quot;Success msg&quot;</span><span class="p">,</span> <span class="nx">pattern</span><span class="o">:</span> <span class="s2">&quot;@any&quot;</span> <span class="p">})</span>
+    <span class="kr">public</span> <span class="nx">msg</span>: <span class="kt">string</span><span class="p">;</span>
+
+    <span class="kr">public</span> <span class="nx">handle</span><span class="p">(</span> <span class="kd">@ParseJson</span> <span class="nx">response</span>: <span class="kt">Response</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">EventPlan</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">rand</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ChannelAddress</span><span class="p">(</span><span class="s2">&quot;#random&quot;</span><span class="p">);</span>
+        <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">EventPlan</span><span class="p">().</span><span class="nx">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">DirectedMessage</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">rand</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Response handlers are declared with the <code class="codehilite"><span class="nx">ResponseHandler</span></code> decorator
+and the class must implement the
+<code class="codehilite"><span class="nx">handle</span><span class="p">(</span><span class="nx">response</span>: <span class="kt">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">EventPlan</span> <span class="o">|</span> <span class="nx">CommandPlan</span></code> method of the
+<code class="codehilite"><span class="nx">HandleResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span></code> interface. When the handler receives a JSON
+payload, you can benefit from automatic JSON deserialization into an object by
+decorating the response parameter with the <code class="codehilite"><span class="kd">@ParseJson</span></code> decorator,
+for example <code class="codehilite"><span class="nx">handle</span><span class="p">(</span><span class="kd">@ParseJson</span> <span class="nx">response</span>: <span class="kt">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">CommandPlan</span></code>.</p>
+<p>Response Handlers must also return a plan, just like any handler. However, they
+must return the appropriate type of plan for the execution chain in which they
+respond. So for an <a href="./">Event Handler</a> they must
+return an <code class="codehilite"><span class="nx">EventPlan</span></code>, and for a <a href="../command-handlers/">Command Handler</a>
+they must return a <code class="codehilite"><span class="nx">CommandPlan</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">It&rsquo;s all asynchronous</p>
+<p>It is important to appreciate that because handlers return plans,
+the actions declared in that plan are executed asynchronously. In other
+words, plans are just data the Rug runtime knows how to interpret but your
+handler cannot invoke those Rugs directly. So it&rsquo;s not safe to make
+assumptions about when instructions in a plan will be run, although
+it is fair to say that the Atomist platform will do its best to apply them
+as soon as possible.</p>
+</div>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../command-handlers/" title="Command Handlers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Command Handlers
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            &copy; 2017 Atomist, Inc.
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://the-composition.com/" class="md-footer-social__link fa fa-medium"></a>
+    
+      <a href="https://github.com/atomist" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/atomist" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://join.atomist.com/" class="md-footer-social__link fa fa-slack"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application-c35428f87f.js"></script>
+      
+      
+      <script>app.initialize({url:{base:"../../.."}})</script>
+      
+    
+    
+      
+      <script>!function(e,t,a,n,o,c,i){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=t.createElement(a),i=t.getElementsByTagName(a)[0],c.async=1,c.src=n,i.parentNode.insertBefore(c,i)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-74966852-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var t=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",t,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
+      
+    
+  </body>
+</html>
